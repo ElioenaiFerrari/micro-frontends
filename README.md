@@ -14,4 +14,4 @@ run `yarn start` to start the serve
 - zoo-list -> list all animals
 - zoo-details -> details of an animal
 
-> If you stop detail serve form example, the rest of application will be running and working
+> If you stop detail serve for example, the rest of application will be running and working
