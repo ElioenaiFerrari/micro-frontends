@@ -1,10 +1,10 @@
 # A MicroFrontends study
 
-# Install deps
+## Install deps
 
 run `yarn` to install dependencies
 
-# Run
+## Run
 
 run `yarn start` to start the serve
 
