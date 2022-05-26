@@ -50,13 +50,17 @@
   });
 </script>
 <style>
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
   #zoo-list {
     list-style: none;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
-    overflow-y: none;
+    overflow: hidden;
   }
 
   .zoo-list__item {
@@ -64,10 +68,17 @@
     flex-direction: row;
     align-items: center;
     margin-bottom: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid gray;
     padding: 16px;
     cursor: pointer;
     padding: 16px;
+    border-radius: 8px;
+    transition: 0.2s ease-in-out;
+    background: white;
+  }
+
+  .zoo-list__item:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   }
 
   .zoo-list__item__image {
