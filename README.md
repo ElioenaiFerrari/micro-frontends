@@ -1,8 +1,14 @@
 # A MicroFrontends study
 
-# Run `yarn` to install dependencies and run `yarn start` to start server
+# Install deps
 
-> Run the same command to start the server in bottom folders
+run `yarn` to install dependencies
+
+# Run
+
+run `yarn start` to start the serve
+
+> Run the top same commands in all following folders
 
 - container -> root component (mediator)
 - zoo-list -> list all animals
