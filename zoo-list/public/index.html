@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List</title>
+</head>
+
+<body>
+  <ul id="zoo-list"></ul>
+</body>
+<script>
+  const FRAGMENT_EVENT_PREFIX = 'fragment-event:';
+
+  window.addEventListener('load', async () => {
+    const ul = document.getElementById('zoo-list');
+
+    const response = await fetch(
+      `https://zoo-animal-api.herokuapp.com/animals/rand/10`
+    );
+
+    const animals = await response.json();
+
+    animals.map((animal) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+          <div class='zoo-list__item'>
+            <img class='zoo-list__item__image' src='${animal.image_link}' />
+            <div class='zoo-list__item__info'>
+              <h3>Name: ${animal.name}</h3>
+              <p>Latin name: ${animal.latin_name}</p>
+            </div>
+          <div>
+        `;
+
+      li.addEventListener('click', async () => {
+        window.top.postMessage(
+          {
+            type: `${FRAGMENT_EVENT_PREFIX}zoo.detail`,
+            data: animal,
+          },
+          '*'
+        );
+      });
+
+      ul.appendChild(li);
+    });
+  });
+</script>
+<style>
+  #zoo-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    overflow-y: none;
+  }
+
+  .zoo-list__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    cursor: pointer;
+    padding: 16px;
+  }
+
+  .zoo-list__item__image {
+    width: 180px;
+    height: 180px;
+    margin-right: 1rem;
+    background-size: cover;
+  }
+
+  .zoo-list__item__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .zoo-list__item__info h3 {
+    margin: 0;
+  }
+
+  .zoo-list__item__info p {
+    margin: 0;
+  }
+</style>
+
+</html>

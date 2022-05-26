@@ -1,0 +1,12 @@
+{
+  "name": "zoo-list",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve -s public -l 3000"
+  },
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
+}
